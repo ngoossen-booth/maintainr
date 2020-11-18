@@ -1,0 +1,150 @@
+<div>
+  <div>
+    <h1>
+      List of all households
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new household
+    </h2>
+
+    <form action="/insert_household" method="post">
+      <div>
+        <label for="owner_id_box">
+          Owner
+        </label>
+
+        <input type="text" id="owner_id_box" name="query_owner_id">
+      </div>
+
+      <div>
+        <label for="address_box">
+          Address
+        </label>
+
+        <input type="text" id="address_box" name="query_address">
+      </div>
+
+      <div>
+        <label for="year_built_box">
+          Year built
+        </label>
+
+        <input type="date" id="year_built_box" name="query_year_built">
+      </div>
+
+      <div>
+        <label for="equipment_count_box">
+          Equipment count
+        </label>
+
+        <input type="text" id="equipment_count_box" name="query_equipment_count">
+      </div>
+
+      <div>
+        <label for="clothes_count_box">
+          Clothes count
+        </label>
+
+        <input type="text" id="clothes_count_box" name="query_clothes_count">
+      </div>
+
+      <button>
+        Create household
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table>
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Owner
+        </th>
+
+        <th>
+          Address
+        </th>
+
+        <th>
+          Year built
+        </th>
+
+        <th>
+          Equipment count
+        </th>
+
+        <th>
+          Clothes count
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_households.each do |a_household| %>
+      <tr>
+        <td>
+          <%= a_household.id %>
+        </td>
+
+        <td>
+          <%= a_household.owner_id %>
+        </td>
+
+        <td>
+          <%= a_household.address %>
+        </td>
+
+        <td>
+          <%= a_household.year_built %>
+        </td>
+
+        <td>
+          <%= a_household.equipment_count %>
+        </td>
+
+        <td>
+          <%= a_household.clothes_count %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_household.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_household.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/households/<%= a_household.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

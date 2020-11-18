@@ -1,0 +1,131 @@
+<div>
+  <div>
+    <h1>
+      Household #<%= @the_household.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/households">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_household/<%= @the_household.id %>">
+          Delete household
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Owner
+      </dt>
+      <dd>
+        <%= @the_household.owner_id %>
+      </dd>
+
+      <dt>
+        Address
+      </dt>
+      <dd>
+        <%= @the_household.address %>
+      </dd>
+
+      <dt>
+        Year built
+      </dt>
+      <dd>
+        <%= @the_household.year_built %>
+      </dd>
+
+      <dt>
+        Equipment count
+      </dt>
+      <dd>
+        <%= @the_household.equipment_count %>
+      </dd>
+
+      <dt>
+        Clothes count
+      </dt>
+      <dd>
+        <%= @the_household.clothes_count %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_household.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_household.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit household
+    </h2>
+
+    <form action="/modify_household/<%= @the_household.id %>"  method="post" >
+      <div>
+        <label for="owner_id_box">
+          Owner
+        </label>
+
+        <input type="text" id="owner_id_box" name="query_owner_id" value="<%= @the_household.owner_id %>">
+      </div>
+
+      <div>
+        <label for="address_box">
+          Address
+        </label>
+
+        <input type="text" id="address_box" name="query_address" value="<%= @the_household.address %>">
+      </div>
+
+      <div>
+        <label for="year_built_box">
+          Year built
+        </label>
+
+        <input type="date" id="year_built_box" name="query_year_built" value="<%= @the_household.year_built %>">
+      </div>
+
+      <div>
+        <label for="equipment_count_box">
+          Equipment count
+        </label>
+
+        <input type="text" id="equipment_count_box" name="query_equipment_count" value="<%= @the_household.equipment_count %>">
+      </div>
+
+      <div>
+        <label for="clothes_count_box">
+          Clothes count
+        </label>
+
+        <input type="text" id="clothes_count_box" name="query_clothes_count" value="<%= @the_household.clothes_count %>">
+      </div>
+
+      <button>
+        Update household
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

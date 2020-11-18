@@ -1,0 +1,100 @@
+<div>
+  <div>
+    <h1>
+      List of all components
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new component
+    </h2>
+
+    <form action="/insert_component" method="post">
+      <div>
+        <label for="equipment_id_box">
+          Equipment
+        </label>
+
+        <input type="text" id="equipment_id_box" name="query_equipment_id">
+      </div>
+
+      <div>
+        <input type="checkbox" id="retired_box" name="query_retired" value="1">
+
+        <label for="retired_box">Retired</label>
+      </div>
+
+      <button>
+        Create component
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table>
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Equipment
+        </th>
+
+        <th>
+          Retired
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_components.each do |a_component| %>
+      <tr>
+        <td>
+          <%= a_component.id %>
+        </td>
+
+        <td>
+          <%= a_component.equipment_id %>
+        </td>
+
+        <td>
+          <%= a_component.retired %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_component.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_component.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/components/<%= a_component.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

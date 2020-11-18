@@ -1,0 +1,86 @@
+<div>
+  <div>
+    <h1>
+      Component #<%= @the_component.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/components">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_component/<%= @the_component.id %>">
+          Delete component
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Equipment
+      </dt>
+      <dd>
+        <%= @the_component.equipment_id %>
+      </dd>
+
+      <dt>
+        Retired
+      </dt>
+      <dd>
+        <%= @the_component.retired %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_component.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_component.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit component
+    </h2>
+
+    <form action="/modify_component/<%= @the_component.id %>"  method="post" >
+      <div>
+        <label for="equipment_id_box">
+          Equipment
+        </label>
+
+        <input type="text" id="equipment_id_box" name="query_equipment_id" value="<%= @the_component.equipment_id %>">
+      </div>
+
+      <div>
+        <input type="checkbox" id="retired_box" name="query_retired" value="1" <%= "checked" if @the_component.retired %>>
+
+        <label for="retired_box">
+            Retired
+        </label>
+      </div>
+
+      <button>
+        Update component
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
