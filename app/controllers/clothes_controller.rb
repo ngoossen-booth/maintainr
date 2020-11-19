@@ -1,7 +1,8 @@
 class ClothesController < ApplicationController
   def index
-    matching_clothes = Clothe.all
+    #matching_clothes = Clothe.all
 
+    matching_clothes = @current_user.clothes
     @list_of_clothes = matching_clothes.order({ :created_at => :desc })
 
     render({ :template => "clothes/index.html.erb" })

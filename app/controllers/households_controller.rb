@@ -1,6 +1,8 @@
 class HouseholdsController < ApplicationController
   def index
-    matching_households = Household.all
+    #matching_households = Household.all
+
+    matching_households = @current_user.households
 
     @list_of_households = matching_households.order({ :created_at => :desc })
 
@@ -19,11 +21,8 @@ class HouseholdsController < ApplicationController
 
   def create
     the_household = Household.new
-    the_household.owner_id = params.fetch("query_owner_id")
+    the_household.owner_id = @current_user.id
     the_household.address = params.fetch("query_address")
-    the_household.year_built = params.fetch("query_year_built")
-    the_household.equipment_count = params.fetch("query_equipment_count")
-    the_household.clothes_count = params.fetch("query_clothes_count")
 
     if the_household.valid?
       the_household.save

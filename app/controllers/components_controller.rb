@@ -1,6 +1,7 @@
 class ComponentsController < ApplicationController
   def index
-    matching_components = Component.all
+    #matching_components = Component.all
+    matching_components = @current_user.components
 
     @list_of_components = matching_components.order({ :created_at => :desc })
 
